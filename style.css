@@ -1,24 +1,19 @@
-/* === Arquivo: css/style.css - Versão Profissional Refinada === */
+/* Seu arquivo: css/style.css (NOVO E APRIMORADO PARA O TEMPLATE!) */
 
-/* === Variáveis Globais === */
+/* --- Variáveis de Cores --- */
 :root {
-    --color-primary: #4CAF50;
-    --color-primary-dark: #388E3C;
-    --color-secondary: #007bff;
-    --color-dark: #2c3e50;
-    --color-light: #f8fafd;
-    --color-medium: #eef2f5;
-    --color-white: #fff;
-    --color-text: #333;
-    --color-muted: #666;
-    --color-border: #ddd;
-    --shadow-light: rgba(0, 0, 0, 0.08);
-    --shadow-medium: rgba(0, 0, 0, 0.15);
-    --transition-default: 0.3s ease;
-    --font-family: 'Poppins', sans-serif;
+    --header-bg: #343a40; /* Cinza escuro */
+    --hero-bg: #6c757d; /* Cinza médio */
+    --primary-btn: #007bff; /* Azul vibrante */
+    --secondary-btn: #6c757d; /* Cinza botão */
+    --text-color: #333;
+    --light-text: #f8f9fa; /* Texto claro para fundos escuros */
+    --white-color: #fff;
+    --border-color: #dee2e6;
+    --feature-circle-color: #6c757d; /* Cor dos círculos */
 }
 
-/* === Reset & Base === */
+/* --- Reset e Global --- */
 * {
     margin: 0;
     padding: 0;
@@ -26,254 +21,284 @@
 }
 
 body {
-    font-family: var(--font-family);
+    font-family: 'Roboto', sans-serif; /* Fonte mais clean */
     line-height: 1.6;
-    color: var(--color-text);
-    background-color: var(--color-light);
+    color: var(--text-color);
+    background-color: var(--white-color);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
 .container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 0 20px;
+    max-width: 960px; /* Largura padrão para templates assim */
+    margin: 0 auto;
+    padding: 0 15px;
     width: 100%;
 }
 
-/* === Header === */
+/* --- Header (Topo) --- */
 header {
-    background-color: var(--color-dark);
-    color: var(--color-white);
-    padding: 18px 0;
-    box-shadow: 0 4px 15px var(--shadow-light);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    background-color: var(--header-bg);
+    padding: 15px 0;
+    color: var(--light-text);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap; /* Permite quebrar linha em telas pequenas */
 }
 
 .logo {
-    font-size: 2rem;
+    font-size: 1.5em;
     font-weight: 700;
-    color: var(--color-primary);
-    letter-spacing: 1px;
+    color: var(--white-color);
 }
 
 nav ul {
-    display: flex;
     list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
 }
 
-nav li + li {
-    margin-left: 35px;
+nav ul li {
+    margin-left: 20px;
 }
 
-nav a {
-    color: var(--color-white);
+nav ul li a {
+    color: var(--light-text);
     text-decoration: none;
-    font-weight: 500;
-    font-size: 1.05rem;
-    position: relative;
-    transition: color var(--transition-default), transform var(--transition-default);
+    font-weight: 400;
+    transition: color 0.3s ease;
 }
 
-nav a:hover {
-    color: var(--color-primary);
-    transform: translateY(-2px);
+nav ul li a:hover {
+    color: var(--primary-btn); /* Azul no hover */
 }
 
-nav a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    background: var(--color-primary);
-    bottom: -5px;
-    left: 0;
-    transition: width var(--transition-default);
+.search-box {
+    display: flex;
+    margin-left: 20px;
 }
 
-nav a:hover::after {
-    width: 100%;
+.search-box input {
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 5px 0 0 5px; /* Bordas arredondadas à esquerda */
+    outline: none;
+    font-size: 0.9em;
 }
 
-/* === Seções Gerais === */
-main {
-    flex-grow: 1;
+.search-box button {
+    background-color: #28a745; /* Verde para o botão de busca */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 0 5px 5px 0; /* Bordas arredondadas à direita */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-section {
+.search-box button:hover {
+    background-color: #218838;
+}
+
+/* --- Hero Section (Seção de Destaque - o "Carousel" visual) --- */
+.hero-section {
+    background-color: var(--hero-bg); /* Fundo cinza como na imagem */
+    color: var(--light-text);
     padding: 80px 0;
     text-align: center;
-}
-
-section:nth-child(even) {
-    background-color: var(--color-medium);
-}
-
-h2 {
-    font-size: 2.8rem;
-    font-weight: 700;
-    color: var(--color-dark);
-    margin-bottom: 40px;
     position: relative;
-    display: inline-block;
+    overflow: hidden; /* Para garantir que nada vaze */
 }
 
-h2::after {
-    content: '';
-    position: absolute;
-    width: 80px;
-    height: 4px;
-    background: var(--color-primary);
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 2px;
+.hero-content {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1; /* Garante que o conteúdo fique acima de qualquer fundo sutil */
 }
 
-/* === Hero Section === */
-.hero-section {
-    background: linear-gradient(135deg, #34495e 0%, var(--color-primary) 100%);
-    color: var(--color-white);
-    padding: 100px 0;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    box-shadow: inset 0 -5px 15px rgba(0,0,0,0.2);
-}
-
-.hero-section h2 {
-    font-size: 3.8rem;
+.hero-section h1 {
+    font-size: 3.5em; /* Grande e impactante */
+    font-weight: 700;
     margin-bottom: 20px;
+    line-height: 1.1;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
 .hero-section p {
-    font-size: 1.4rem;
-    max-width: 800px;
-    margin: 0 auto 40px;
+    font-size: 1.2em;
+    margin-bottom: 30px;
     opacity: 0.9;
 }
 
-.user-select-container {
-    margin-top: 30px;
-    padding: 15px 25px;
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.1);
-    display: inline-block;
-}
-
-.user-select-container label {
-    font-size: 1.2rem;
-    margin-right: 15px;
-    font-weight: 400;
-}
-
-.user-select-container select {
-    padding: 10px 15px;
-    font-size: 1.1rem;
-    border-radius: 8px;
-    border: 1px solid rgba(255,255,255,0.3);
-    background-color: rgba(255,255,255,0.9);
-    color: var(--color-text);
-    background-image: url('data:image/svg+xml;utf8,<svg fill="%23000" height="292.4" viewBox="0 0 292.4 292.4" width="292.4" xmlns="http://www.w3.org/2000/svg"><path d="M287 69.9L146.2 208.5 5.4 69.9c-4.2-4.5-10.7-7-17.6-7h-1.6c-13.8 0-24.9 11.1-24.9 24.9v.8c0 6.9 2.7 13.3 7 17.6L146.2 242.2l141.2-141.2c4.2-4.5 7-10.7 7-17.6v-.8c0-13.8-11.1-24.9-24.9-24.9h-1.6c-6.9 0-13.4 2.5-17.6 7z"/></svg>');
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 12px;
-    padding-right: 30px;
-    cursor: pointer;
-    transition: var(--transition-default);
-    appearance: none;
-}
-
-.user-select-container select:hover {
-    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
-}
-
-/* === Cards === */
-.service-cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 35px;
-    margin-top: 50px;
-}
-
-.card {
-    background-color: var(--color-white);
-    border-radius: 12px;
-    box-shadow: 0 8px 25px var(--shadow-light);
-    padding: 35px;
-    width: 320px;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-    border: 1px solid #eee;
-}
-
-.card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 15px 40px var(--shadow-medium);
-}
-
-.card h3 {
-    color: var(--color-dark);
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    font-weight: 600;
-}
-
-.card p {
-    color: var(--color-muted);
-    margin-bottom: 25px;
-    flex-grow: 1;
-}
-
-.card ul {
-    list-style: none;
-    margin-bottom: 25px;
-}
-
-.card ul li {
-    padding: 8px 0;
-    display: flex;
-    align-items: center;
-    font-size: 0.95rem;
-}
-
-.card ul li::before {
-    content: '✓';
-    color: var(--color-primary);
-    margin-right: 10px;
-    font-weight: 600;
-    font-size: 1.2rem;
-}
-
-/* === Botões === */
+/* Botões da seção Hero */
 .btn {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    padding: 14px 30px;
-    border: none;
-    border-radius: 50px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    transition: all var(--transition-default);
     display: inline-block;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
 }
 
-.btn:hover {
-    background-color: var(--color-primary-dark);
+.btn-primary {
+    background-color: var(--primary-btn); /* Azul principal */
+    color: var(--white-color);
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Azul mais escuro */
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-/* Continúa com tabela, status, responsividade etc. caso deseje */
+.btn-secondary { /* Botões para os recursos */
+    background-color: var(--secondary-btn);
+    color: var(--white-color);
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* --- Features Section (Seção de Recursos - os 3 círculos) --- */
+.features-section {
+    padding: 60px 0;
+    background-color: var(--white-color); /* Fundo branco para esta seção */
+}
+
+.feature-row {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; /* Permite quebrar linha */
+    gap: 30px; /* Espaçamento entre os itens */
+    margin-top: 40px;
+}
+
+.feature-item {
+    flex: 1; /* Distribui o espaço igualmente */
+    min-width: 280px; /* Largura mínima para evitar que fiquem muito pequenos */
+    max-width: 30%; /* Três colunas */
+    text-align: center;
+    padding: 20px;
+}
+
+.feature-circle {
+    width: 140px; /* Tamanho do círculo */
+    height: 140px;
+    background-color: var(--feature-circle-color); /* Cor cinza do círculo */
+    border-radius: 50%; /* Torna-o um círculo */
+    margin: 0 auto 25px auto; /* Centraliza e adiciona espaço abaixo */
+    display: flex; /* Para centralizar conteúdo futuro se houver */
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Sombra suave */
+}
+
+.feature-item h3 {
+    font-size: 1.5em;
+    color: var(--text-color);
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.feature-item p {
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+/* --- Outras Seções (Exemplo) --- */
+section:not(.hero-section):not(.features-section) {
+    padding: 60px 0;
+    text-align: center;
+    background-color: var(--light-bg);
+    border-top: 1px solid var(--border-color);
+}
+
+section:nth-of-type(odd):not(.hero-section):not(.features-section) {
+    background-color: var(--white-color);
+}
+
+/* --- Footer (Rodapé) --- */
+footer {
+    background-color: var(--header-bg);
+    color: var(--light-text);
+    padding: 25px 0;
+    text-align: center;
+    margin-top: auto;
+    font-size: 0.9em;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+footer a {
+    color: var(--primary-btn);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* --- Responsividade --- */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        align-items: flex-start; /* Alinha itens à esquerda */
+    }
+    nav {
+        width: 100%;
+        margin-top: 15px;
+    }
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+    nav ul li {
+        margin: 8px 0;
+    }
+    .search-box {
+        margin-top: 15px;
+        margin-left: 0;
+        width: 100%;
+        justify-content: center;
+    }
+    .hero-section h1 {
+        font-size: 2.5em;
+    }
+    .hero-section p {
+        font-size: 1.1em;
+    }
+    .feature-item {
+        max-width: 80%; /* Uma coluna em telas menores */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section h1 {
+        font-size: 2em;
+    }
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+    .feature-circle {
+        width: 100px;
+        height: 100px;
+    }
+}
