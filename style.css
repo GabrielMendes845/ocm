@@ -1,6 +1,21 @@
-/* Seu arquivo: css/style.css */
+/* Seu arquivo: css/style.css (NOVO E APRIMORADO!) */
 
-/* Reset básico para consistência entre navegadores */
+/* --- Variáveis de Cores para facilitar a manutenção --- */
+:root {
+    --primary-color: #4CAF50; /* Verde vibrante (ação, sucesso) */
+    --secondary-color: #007bff; /* Azul vibrante (links, destaque) */
+    --dark-bg: #2c3e50; /* Azul escuro (cabeçalho, rodapé) */
+    --light-bg: #f8fafd; /* Fundo muito claro */
+    --medium-bg: #eef2f5; /* Fundo de seção alternado */
+    --text-color: #333;
+    --light-text-color: #666;
+    --white-color: #fff;
+    --border-color: #ddd;
+    --shadow-light: rgba(0, 0, 0, 0.08);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+}
+
+/* --- Reset Básico e Tipografia Global --- */
 * {
     margin: 0;
     padding: 0;
@@ -8,13 +23,13 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif; /* Usando a fonte importada */
+    font-family: 'Poppins', sans-serif; /* Fonte moderna e limpa */
     line-height: 1.6;
-    color: #333;
-    background-color: #f4f7f6; /* Fundo suave */
+    color: var(--text-color);
+    background-color: var(--light-bg);
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100vh; /* Garante que o body ocupa a altura total da viewport */
 }
 
 .container {
@@ -24,12 +39,15 @@ body {
     width: 100%;
 }
 
-/* Header */
+/* --- Header (Cabeçalho) --- */
 header {
-    background-color: #2c3e50; /* Azul escuro */
-    color: white;
-    padding: 15px 0;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    background-color: var(--dark-bg);
+    color: var(--white-color);
+    padding: 18px 0;
+    box-shadow: 0 4px 15px var(--shadow-light); /* Sombra mais pronunciada */
+    position: sticky; /* Menu fixo no topo */
+    top: 0;
+    z-index: 1000; /* Garante que fique acima de outros elementos */
 }
 
 header .container {
@@ -39,9 +57,10 @@ header .container {
 }
 
 .logo {
-    font-size: 1.8em;
-    font-weight: 600;
-    color: #4CAF50; /* Verde vibrante */
+    font-size: 2em; /* Logo maior */
+    font-weight: 700; /* Mais negrito */
+    color: var(--primary-color); /* Cor principal para o logo */
+    letter-spacing: 1px; /* Espaçamento entre letras */
 }
 
 nav ul {
@@ -50,273 +69,206 @@ nav ul {
 }
 
 nav ul li {
-    margin-left: 25px;
+    margin-left: 35px; /* Mais espaçamento entre os itens do menu */
 }
 
 nav ul li a {
-    color: white;
+    color: var(--white-color);
     text-decoration: none;
-    font-weight: 400;
-    transition: color 0.3s ease;
+    font-weight: 500; /* Peso médio */
+    font-size: 1.05em;
+    transition: color 0.3s ease, transform 0.3s ease; /* Transição suave no hover */
+    position: relative; /* Para o efeito de sublinhado */
 }
 
 nav ul li a:hover {
-    color: #4CAF50; /* Verde no hover */
+    color: var(--primary-color); /* Verde no hover */
+    transform: translateY(-2px); /* Efeito sutil de levantar */
 }
 
-/* Seções Principais */
+/* Efeito de sublinhado no hover */
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    bottom: -5px;
+    left: 0;
+    transition: width 0.3s ease-in-out;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* --- Main Content (Conteúdo Principal) --- */
 main {
-    flex-grow: 1; /* Ocupa o espaço restante verticalmente */
+    flex-grow: 1;
 }
 
 section {
-    padding: 60px 0;
+    padding: 80px 0; /* Mais padding nas seções */
     text-align: center;
 }
 
-section:nth-child(even) { /* Estilo alternado para seções */
-    background-color: #eef2f5;
+section:nth-child(odd) { /* Fundo alternado */
+    background-color: var(--light-bg);
+}
+
+section:nth-child(even) { /* Fundo alternado */
+    background-color: var(--medium-bg);
 }
 
 h2 {
-    font-size: 2.2em;
-    color: #2c3e50;
-    margin-bottom: 30px;
-    font-weight: 600;
+    font-size: 2.8em; /* Títulos maiores */
+    color: var(--dark-bg);
+    margin-bottom: 40px; /* Mais espaço abaixo do título */
+    font-weight: 700;
+    position: relative;
+    display: inline-block; /* Para o efeito de sublinhado no h2 */
 }
 
-/* Hero Section */
+h2::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 4px;
+    background: var(--primary-color); /* Sublinhado verde */
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+/* --- Hero Section (Seção de Destaque) --- */
 .hero-section {
-    background-color: #34495e; /* Azul mais claro */
-    color: white;
-    padding: 80px 0;
+    background: linear-gradient(135deg, #34495e 0%, #4CAF50 100%); /* Gradiente de fundo */
+    color: var(--white-color);
+    padding: 100px 0; /* Mais padding */
+    box-shadow: inset 0 -5px 15px rgba(0,0,0,0.2); /* Sombra interna para profundidade */
 }
 
 .hero-section h2 {
-    color: white;
-    font-size: 3em;
-    margin-bottom: 15px;
+    color: var(--white-color);
+    font-size: 3.8em; /* Título gigante */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Sombra no texto */
 }
 
 .hero-section p {
-    font-size: 1.2em;
-    margin-bottom: 30px;
+    font-size: 1.4em;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.9;
 }
 
 .user-select-container {
-    margin-top: 20px;
+    margin-top: 30px;
+    background-color: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente */
+    padding: 15px 25px;
+    border-radius: 10px;
+    display: inline-block; /* Ajusta a largura ao conteúdo */
 }
 
 .user-select-container label {
-    font-size: 1.1em;
-    margin-right: 10px;
+    font-size: 1.2em;
+    margin-right: 15px;
+    font-weight: 400;
 }
 
 .user-select-container select {
-    padding: 8px 12px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 1em;
-    background-color: white;
-    color: #333;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 1.1em;
+    background-color: rgba(255, 255, 255, 0.9); /* Quase branco */
+    color: var(--text-color);
     outline: none;
     cursor: pointer;
+    transition: all 0.3s ease;
+    -webkit-appearance: none; /* Remove estilo padrão do select em alguns navegadores */
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000%22%20d%3D%22M287%2069.9L146.2%20208.5%205.4%2069.9c-4.2-4.5-10.7-7-17.6-7h-1.6c-13.8%200-24.9%2011.1-24.9%2024.9v.8c0%206.9%202.7%2013.3%207%2017.6L146.2%20242.2l141.2-141.2c4.2-4.5%207-10.7%207-17.6v-.8c0-13.8-11.1-24.9-24.9-24.9h-1.6c-6.9%200-13.4%202.5-17.6%207z%22%2F%3E%3C%2Fsvg%3E'); /* Seta customizada */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+    padding-right: 30px;
 }
 
-/* Service Cards */
+.user-select-container select:hover {
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+/* --- Service Cards (Cards de Serviço) --- */
 .service-cards {
     display: flex;
-    flex-wrap: wrap; /* Permite que os cards quebrem linha */
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 30px; /* Espaçamento entre os cards */
-    margin-top: 40px;
+    gap: 35px; /* Mais espaçamento */
+    margin-top: 50px;
 }
 
 .card {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    padding: 30px;
-    width: 300px; /* Largura fixa para os cards */
+    background-color: var(--white-color);
+    border-radius: 12px; /* Bordas mais arredondadas */
+    box-shadow: 0 8px 25px var(--shadow-light); /* Sombra mais suave e espalhada */
+    padding: 35px;
+    width: 320px; /* Largura um pouco maior */
     text-align: left;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); /* Transição suave e complexa */
+    border: 1px solid #eee; /* Borda sutil */
+    display: flex;
+    flex-direction: column;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    transform: translateY(-8px) scale(1.02); /* Levanta e cresce sutilmente */
+    box-shadow: 0 15px 40px var(--shadow-medium); /* Sombra mais forte no hover */
 }
 
 .card h3 {
-    color: #34495e;
-    font-size: 1.6em;
-    margin-bottom: 15px;
+    color: var(--dark-bg);
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.card p {
+    font-size: 1em;
+    color: var(--light-text-color);
+    margin-bottom: 25px;
+    flex-grow: 1; /* Faz o parágrafo ocupar o espaço */
 }
 
 .card ul {
     list-style: none;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .card ul li {
-    padding: 5px 0;
-    color: #555;
+    padding: 8px 0;
+    color: var(--text-color);
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
 }
 
 .card ul li::before {
-    content: '✔'; /* Ícone de check */
-    color: #4CAF50;
-    margin-right: 8px;
+    content: '✓'; /* Ícone de check */
+    color: var(--primary-color);
+    margin-right: 10px;
     font-weight: 600;
+    font-size: 1.2em;
 }
 
-/* Botões */
+/* Botões Gerais */
 .btn {
-    background-color: #4CAF50; /* Verde */
-    color: white;
-    padding: 12px 25px;
+    background-color: var(--primary-color); /* Verde principal */
+    color: var(--white-color);
+    padding: 14px 30px; /* Mais padding */
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-    background-color: #45a049; /* Verde mais escuro no hover */
-}
-
-/* Tabela de Faturas */
-.invoice-table-container {
-    overflow-x: auto; /* Permite rolagem horizontal em telas pequenas */
-    margin-top: 30px;
-}
-
-#invoiceTable {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 0 auto;
-    background-color: white;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-
-#invoiceTable th, #invoiceTable td {
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    text-align: left;
-}
-
-#invoiceTable th {
-    background-color: #f0f0f0;
-    font-weight: 600;
-    color: #555;
-}
-
-#invoiceTable tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-#invoiceTable tbody tr:hover {
-    background-color: #f1f1f1;
-}
-
-/* Status na tabela */
-.status-pago {
-    color: #28a745; /* Verde */
-    font-weight: 600;
-}
-.status-pendente {
-    color: #ffc107; /* Amarelo */
-    font-weight: 600;
-}
-.status-vencido {
-    color: #dc3545; /* Vermelho */
-    font-weight: 600;
-}
-
-/* Botões de Ação na tabela */
-.action-btn {
-    background-color: #007bff; /* Azul */
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.9em;
-    transition: background-color 0.3s ease;
-    margin-right: 5px;
-}
-
-.action-btn.view {
-    background-color: #17a2b8; /* Ciano */
-}
-.action-btn.pay {
-    background-color: #28a745; /* Verde */
-}
-
-.action-btn:hover {
-    opacity: 0.9;
-}
-
-
-/* Footer */
-footer {
-    background-color: #2c3e50;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-    margin-top: auto; /* Garante que o footer fique no final da página */
-}
-
-footer p {
-    font-size: 0.9em;
-    margin: 5px 0;
-}
-
-/* Seção de Contato */
-.contact-section a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-.contact-section a:hover {
-    text-decoration: underline;
-}
-
-/* Responsividade Básica */
-@media (max-width: 768px) {
-    header .container {
-        flex-direction: column;
-    }
-    nav ul {
-        flex-direction: column;
-        margin-top: 15px;
-    }
-    nav ul li {
-        margin: 10px 0;
-    }
-    .hero-section h2 {
-        font-size: 2.2em;
-    }
-    .service-cards .card {
-        width: 100%; /* Cards ocupam largura total em telas pequenas */
-        max-width: 350px;
-    }
-    #invoiceTable th, #invoiceTable td {
-        padding: 8px 10px;
-        font-size: 0.9em;
-    }
-}
-
-@media (max-width: 480px) {
-    .logo {
-        font-size: 1.5em;
-    }
-    .hero-section h2 {
-        font-size: 1.8em;
-    }
-    h2 {
-        font-size: 1.8em;
-    }
-}
+    border-radius: 50px; /* Bot
