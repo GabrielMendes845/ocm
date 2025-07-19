@@ -1,67 +1,322 @@
 /* Seu arquivo: css/style.css */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #e9f5f9; /* Um azul bem clarinho */
-    color: #333;
+
+/* Reset básico para consistência entre navegadores */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* Usando a fonte importada */
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f7f6; /* Fundo suave */
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    align-items: center;
-    justify-content: center;
 }
 
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+/* Header */
 header {
-    background-color: #007bff; /* Azul vibrante */
+    background-color: #2c3e50; /* Azul escuro */
     color: white;
-    padding: 20px 0;
-    width: 100%;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-h1 {
-    margin: 0;
-    font-size: 2.5em;
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
+.logo {
+    font-size: 1.8em;
+    font-weight: 600;
+    color: #4CAF50; /* Verde vibrante */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 25px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #4CAF50; /* Verde no hover */
+}
+
+/* Seções Principais */
 main {
-    flex-grow: 1; /* Faz o conteúdo principal ocupar o espaço restante */
-    padding: 40px 20px;
-    text-align: center;
-    max-width: 800px;
-    width: 100%;
-    box-sizing: border-box; /* Garante que padding não estoure a largura */
+    flex-grow: 1; /* Ocupa o espaço restante verticalmente */
 }
 
-p {
+section {
+    padding: 60px 0;
+    text-align: center;
+}
+
+section:nth-child(even) { /* Estilo alternado para seções */
+    background-color: #eef2f5;
+}
+
+h2 {
+    font-size: 2.2em;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+/* Hero Section */
+.hero-section {
+    background-color: #34495e; /* Azul mais claro */
+    color: white;
+    padding: 80px 0;
+}
+
+.hero-section h2 {
+    color: white;
+    font-size: 3em;
+    margin-bottom: 15px;
+}
+
+.hero-section p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.user-select-container {
+    margin-top: 20px;
+}
+
+.user-select-container label {
     font-size: 1.1em;
-    line-height: 1.6;
+    margin-right: 10px;
+}
+
+.user-select-container select {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    background-color: white;
+    color: #333;
+    outline: none;
+    cursor: pointer;
+}
+
+/* Service Cards */
+.service-cards {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os cards quebrem linha */
+    justify-content: center;
+    gap: 30px; /* Espaçamento entre os cards */
+    margin-top: 40px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    padding: 30px;
+    width: 300px; /* Largura fixa para os cards */
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+.card h3 {
+    color: #34495e;
+    font-size: 1.6em;
+    margin-bottom: 15px;
+}
+
+.card ul {
+    list-style: none;
     margin-bottom: 20px;
 }
 
-button {
-    background-color: #28a745; /* Verde */
+.card ul li {
+    padding: 5px 0;
+    color: #555;
+}
+
+.card ul li::before {
+    content: '✔'; /* Ícone de check */
+    color: #4CAF50;
+    margin-right: 8px;
+    font-weight: 600;
+}
+
+/* Botões */
+.btn {
+    background-color: #4CAF50; /* Verde */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #45a049; /* Verde mais escuro no hover */
+}
+
+/* Tabela de Faturas */
+.invoice-table-container {
+    overflow-x: auto; /* Permite rolagem horizontal em telas pequenas */
+    margin-top: 30px;
+}
+
+#invoiceTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+#invoiceTable th, #invoiceTable td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+#invoiceTable th {
+    background-color: #f0f0f0;
+    font-weight: 600;
+    color: #555;
+}
+
+#invoiceTable tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#invoiceTable tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Status na tabela */
+.status-pago {
+    color: #28a745; /* Verde */
+    font-weight: 600;
+}
+.status-pendente {
+    color: #ffc107; /* Amarelo */
+    font-weight: 600;
+}
+.status-vencido {
+    color: #dc3545; /* Vermelho */
+    font-weight: 600;
+}
+
+/* Botões de Ação na tabela */
+.action-btn {
+    background-color: #007bff; /* Azul */
     color: white;
     border: none;
-    padding: 12px 25px;
-    border-radius: 8px;
-    font-size: 1.1em;
+    padding: 8px 12px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-button:hover {
-    background-color: #218838; /* Verde mais escuro no hover */
-}
-
-footer {
-    background-color: #343a40; /* Cinza escuro */
-    color: white;
-    padding: 15px 0;
-    width: 100%;
-    text-align: center;
     font-size: 0.9em;
+    transition: background-color 0.3s ease;
+    margin-right: 5px;
+}
+
+.action-btn.view {
+    background-color: #17a2b8; /* Ciano */
+}
+.action-btn.pay {
+    background-color: #28a745; /* Verde */
+}
+
+.action-btn:hover {
+    opacity: 0.9;
+}
+
+
+/* Footer */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: auto; /* Garante que o footer fique no final da página */
+}
+
+footer p {
+    font-size: 0.9em;
+    margin: 5px 0;
+}
+
+/* Seção de Contato */
+.contact-section a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.contact-section a:hover {
+    text-decoration: underline;
+}
+
+/* Responsividade Básica */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+    }
+    nav ul {
+        flex-direction: column;
+        margin-top: 15px;
+    }
+    nav ul li {
+        margin: 10px 0;
+    }
+    .hero-section h2 {
+        font-size: 2.2em;
+    }
+    .service-cards .card {
+        width: 100%; /* Cards ocupam largura total em telas pequenas */
+        max-width: 350px;
+    }
+    #invoiceTable th, #invoiceTable td {
+        padding: 8px 10px;
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.5em;
+    }
+    .hero-section h2 {
+        font-size: 1.8em;
+    }
+    h2 {
+        font-size: 1.8em;
+    }
 }
