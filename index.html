@@ -3,24 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Olá Mundo!</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-            color: #333;
-        }
-        h1 {
-            color: #007bff;
-        }
-    </style>
+    <title>Minha Página Super Aprimorada!</title>
+    <link rel="stylesheet" href="/css/style.css"> 
 </head>
 <body>
-    <h1>Olá, Mundo!</h1>
+    <header>
+        <h1>Bem-vindo à Minha Página Super Aprimorada!</h1>
+    </header>
+
+    <main>
+        <p>Este é um exemplo de uma página mais completa, com estilos definidos em um arquivo CSS separado e interatividade com JavaScript.</p>
+        <button id="myButton">Clique Para Ver a Mágica!</button>
+        <p>A data e hora atual é: <span id="currentDateTime"></span></p>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Minha Página Incrível</p>
+    </footer>
+
+    <script src="/js/script.js"></script>
+    <script>
+        // Adiciona a data e hora atual diretamente no HTML
+        const now = new Date();
+        document.getElementById('currentDateTime').textContent = now.toLocaleString('pt-BR');
+    </script>
 </body>
 </html>
