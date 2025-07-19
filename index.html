@@ -3,29 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha Página Super Aprimorada!</title>
-    <link rel="stylesheet" href="/css/style.css"> 
+    <title>Sua Empresa - Serviços e Faturas</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>Bem-vindo à Minha Página Super Aprimorada!</h1>
+        <div class="container">
+            <div class="logo">Sua Empresa</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#faturas">Faturas</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                    <li><a href="#" id="logoutBtn">Sair</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <main>
-        <p>Este é um exemplo de uma página mais completa, com estilos definidos em um arquivo CSS separado e interatividade com JavaScript.</p>
-        <button id="myButton">Clique Para Ver a Mágica!</button>
-        <p>A data e hora atual é: <span id="currentDateTime"></span></p>
+        <section id="home" class="hero-section">
+            <div class="container">
+                <h2>Bem-vindo ao Portal do Cliente!</h2>
+                <p>Aqui você pode gerenciar seus serviços e visualizar suas faturas de forma rápida e segura.</p>
+                <div class="user-select-container">
+                    <label for="userSelect">Acessar como Usuário:</label>
+                    <select id="userSelect">
+                        <option value="user1">Usuário 1 (João Silva)</option>
+                        <option value="user2">Usuário 2 (Maria Oliveira)</option>
+                        <option value="user3">Usuário 3 (Pedro Souza)</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicos" class="services-section">
+            <div class="container">
+                <h2>Nossos Serviços</h2>
+                <div class="service-cards">
+                    <div class="card">
+                        <h3>Plano Básico</h3>
+                        <p>Acesso essencial aos nossos recursos, ideal para iniciantes.</p>
+                        <ul>
+                            <li>50GB Armazenamento</li>
+                            <li>Suporte Padrão</li>
+                            <li>Relatórios Mensais</li>
+                        </ul>
+                        <button class="btn">Saiba Mais</button>
+                    </div>
+                    <div class="card">
+                        <h3>Plano Premium</h3>
+                        <p>Solução completa com recursos avançados para empresas.</p>
+                        <ul>
+                            <li>500GB Armazenamento</li>
+                            <li>Suporte Prioritário 24/7</li>
+                            <li>Relatórios Detalhados</li>
+                            <li>Consultoria Exclusiva</li>
+                        </ul>
+                        <button class="btn">Saiba Mais</button>
+                    </div>
+                    <div class="card">
+                        <h3>Consultoria Personalizada</h3>
+                        <p>Tenha um especialista dedicado para otimizar suas operações.</p>
+                        <ul>
+                            <li>Reuniões Semanais</li>
+                            <li>Análise de Desempenho</li>
+                            <li>Estratégias de Crescimento</li>
+                        </ul>
+                        <button class="btn">Solicitar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faturas" class="invoices-section">
+            <div class="container">
+                <h2>Minhas Faturas</h2>
+                <p id="currentUserName">Faturas de: Usuário 1 (João Silva)</p>
+                <div class="invoice-table-container">
+                    <table id="invoiceTable">
+                        <thead>
+                            <tr>
+                                <th>Número da Fatura</th>
+                                <th>Data</th>
+                                <th>Vencimento</th>
+                                <th>Valor</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            </tbody>
+                    </table>
+                    <p id="noInvoicesMessage" style="display: none;">Nenhuma fatura encontrada para este usuário.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="contact-section">
+            <div class="container">
+                <h2>Fale Conosco</h2>
+                <p>Entre em contato para dúvidas, suporte ou mais informações.</p>
+                <p>Email: <a href="mailto:contato@suaempresa.com">contato@suaempresa.com</a></p>
+                <p>Telefone: (XX) XXXX-XXXX</p>
+            </div>
+        </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 Minha Página Incrível</p>
+        <div class="container">
+            <p>&copy; <span id="currentYear"></span> Sua Empresa. Todos os direitos reservados.</p>
+            <p>Última atualização: <span id="lastUpdatedDate"></span></p>
+        </div>
     </footer>
 
     <script src="/js/script.js"></script>
-    <script>
-        // Adiciona a data e hora atual diretamente no HTML
-        const now = new Date();
-        document.getElementById('currentDateTime').textContent = now.toLocaleString('pt-BR');
-    </script>
 </body>
 </html>
