@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sua Empresa - Serviços e Faturas</title>
+    <title>Sua Empresa - Faturas</title>
     <link rel="stylesheet" href="/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
@@ -14,7 +14,6 @@
             <nav>
                 <ul>
                     <li><a href="#home">Início</a></li>
-                    <li><a href="#servicos">Serviços</a></li>
                     <li><a href="#faturas">Faturas</a></li>
                     <li><a href="#contato">Contato</a></li>
                     <li><a href="#" id="logoutBtn">Sair</a></li>
@@ -22,12 +21,12 @@
             </nav>
         </div>
     </header>
-
+ 
     <main>
         <section id="home" class="hero-section">
             <div class="container">
                 <h2>Bem-vindo ao Portal do Cliente!</h2>
-                <p>Aqui você pode gerenciar seus serviços e visualizar suas faturas de forma rápida e segura.</p>
+                <p>Aqui você pode gerenciar suas faturas de forma rápida e segura.</p>
                 <div class="user-select-container">
                     <label for="userSelect">Acessar como Usuário:</label>
                     <select id="userSelect">
@@ -38,46 +37,7 @@
                 </div>
             </div>
         </section>
-
-        <section id="servicos" class="services-section">
-            <div class="container">
-                <h2>Nossos Serviços</h2>
-                <div class="service-cards">
-                    <div class="card">
-                        <h3>Plano Básico</h3>
-                        <p>Acesso essencial aos nossos recursos, ideal para iniciantes.</p>
-                        <ul>
-                            <li>50GB Armazenamento</li>
-                            <li>Suporte Padrão</li>
-                            <li>Relatórios Mensais</li>
-                        </ul>
-                        <button class="btn">Saiba Mais</button>
-                    </div>
-                    <div class="card">
-                        <h3>Plano Premium</h3>
-                        <p>Solução completa com recursos avançados para empresas.</p>
-                        <ul>
-                            <li>500GB Armazenamento</li>
-                            <li>Suporte Prioritário 24/7</li>
-                            <li>Relatórios Detalhados</li>
-                            <li>Consultoria Exclusiva</li>
-                        </ul>
-                        <button class="btn">Saiba Mais</button>
-                    </div>
-                    <div class="card">
-                        <h3>Consultoria Personalizada</h3>
-                        <p>Tenha um especialista dedicado para otimizar suas operações.</p>
-                        <ul>
-                            <li>Reuniões Semanais</li>
-                            <li>Análise de Desempenho</li>
-                            <li>Estratégias de Crescimento</li>
-                        </ul>
-                        <button class="btn">Solicitar</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
+ 
         <section id="faturas" class="invoices-section">
             <div class="container">
                 <h2>Minhas Faturas</h2>
@@ -101,7 +61,7 @@
                 </div>
             </div>
         </section>
-
+ 
         <section id="contato" class="contact-section">
             <div class="container">
                 <h2>Fale Conosco</h2>
@@ -111,14 +71,14 @@
             </div>
         </section>
     </main>
-
+ 
     <footer>
         <div class="container">
             <p>&copy; <span id="currentYear"></span> Sua Empresa. Todos os direitos reservados.</p>
             <p>Última atualização: <span id="lastUpdatedDate"></span></p>
         </div>
     </footer>
-
+ 
     <script src="/js/script.js"></script>
 </body>
 </html>
