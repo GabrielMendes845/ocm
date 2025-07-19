@@ -1,1 +1,305 @@
+/* Seu arquivo: css/style.css (NOVO E APRIMORADO PARA O TEMPLATE!) */
+
+/* --- Variáveis de Cores --- */
+:root {
+    --header-bg: #343a40; /* Cinza escuro */
+    --hero-bg: #6c757d; /* Cinza médio */
+    --primary-btn: #007bff; /* Azul vibrante */
+    --secondary-btn: #6c757d; /* Cinza botão */
+    --text-color: #333;
+    --light-text: #f8f9fa; /* Texto claro para fundos escuros */
+    --white-color: #fff;
+    --border-color: #dee2e6;
+    --feature-circle-color: #6c757d; /* Cor dos círculos */
+}
+
+/* --- Reset e Global --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif; /* Fonte mais clean */
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--white-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 960px; /* Largura padrão para templates assim */
+    margin: 0 auto;
+    padding: 0 15px;
+    width: 100%;
+}
+
+/* --- Header (Topo) --- */
+header {
+    background-color: var(--header-bg);
+    padding: 15px 0;
+    color: var(--light-text);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Permite quebrar linha em telas pequenas */
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--white-color);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: var(--light-text);
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--primary-btn); /* Azul no hover */
+}
+
+.search-box {
+    display: flex;
+    margin-left: 20px;
+}
+
+.search-box input {
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 5px 0 0 5px; /* Bordas arredondadas à esquerda */
+    outline: none;
+    font-size: 0.9em;
+}
+
+.search-box button {
+    background-color: #28a745; /* Verde para o botão de busca */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 0 5px 5px 0; /* Bordas arredondadas à direita */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-box button:hover {
+    background-color: #218838;
+}
+
+/* --- Hero Section (Seção de Destaque - o "Carousel" visual) --- */
+.hero-section {
+    background-color: var(--hero-bg); /* Fundo cinza como na imagem */
+    color: var(--light-text);
+    padding: 80px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* Para garantir que nada vaze */
+}
+
+.hero-content {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1; /* Garante que o conteúdo fique acima de qualquer fundo sutil */
+}
+
+.hero-section h1 {
+    font-size: 3.5em; /* Grande e impactante */
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.1;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.hero-section p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+/* Botões da seção Hero */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-btn); /* Azul principal */
+    color: var(--white-color);
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Azul mais escuro */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.btn-secondary { /* Botões para os recursos */
+    background-color: var(--secondary-btn);
+    color: var(--white-color);
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* --- Features Section (Seção de Recursos - os 3 círculos) --- */
+.features-section {
+    padding: 60px 0;
+    background-color: var(--white-color); /* Fundo branco para esta seção */
+}
+
+.feature-row {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; /* Permite quebrar linha */
+    gap: 30px; /* Espaçamento entre os itens */
+    margin-top: 40px;
+}
+
+.feature-item {
+    flex: 1; /* Distribui o espaço igualmente */
+    min-width: 280px; /* Largura mínima para evitar que fiquem muito pequenos */
+    max-width: 30%; /* Três colunas */
+    text-align: center;
+    padding: 20px;
+}
+
+.feature-circle {
+    width: 140px; /* Tamanho do círculo */
+    height: 140px;
+    background-color: var(--feature-circle-color); /* Cor cinza do círculo */
+    border-radius: 50%; /* Torna-o um círculo */
+    margin: 0 auto 25px auto; /* Centraliza e adiciona espaço abaixo */
+    display: flex; /* Para centralizar conteúdo futuro se houver */
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Sombra suave */
+}
+
+.feature-item h3 {
+    font-size: 1.5em;
+    color: var(--text-color);
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.feature-item p {
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+/* --- Outras Seções (Exemplo) --- */
+section:not(.hero-section):not(.features-section) {
+    padding: 60px 0;
+    text-align: center;
+    background-color: var(--light-bg);
+    border-top: 1px solid var(--border-color);
+}
+
+section:nth-of-type(odd):not(.hero-section):not(.features-section) {
+    background-color: var(--white-color);
+}
+
+/* --- Footer (Rodapé) --- */
+footer {
+    background-color: var(--header-bg);
+    color: var(--light-text);
+    padding: 25px 0;
+    text-align: center;
+    margin-top: auto;
+    font-size: 0.9em;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+footer a {
+    color: var(--primary-btn);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* --- Responsividade --- */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        align-items: flex-start; /* Alinha itens à esquerda */
+    }
+    nav {
+        width: 100%;
+        margin-top: 15px;
+    }
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+    nav ul li {
+        margin: 8px 0;
+    }
+    .search-box {
+        margin-top: 15px;
+        margin-left: 0;
+        width: 100%;
+        justify-content: center;
+    }
+    .hero-section h1 {
+        font-size: 2.5em;
+    }
+    .hero-section p {
+        font-size: 1.1em;
+    }
+    .feature-item {
+        max-width: 80%; /* Uma coluna em telas menores */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section h1 {
+        font-size: 2em;
+    }
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+    .feature-circle {
+        width: 100px;
+        height: 100px;
+    }
+}
 
