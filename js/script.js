@@ -1,21 +1,7 @@
 // Seu arquivo: js/script.js
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Dados de Faturas (Simulando um banco de dados no frontend)
-    const invoicesData = {
-        user1: [ // João Silva
-            { id: 'F001', date: '2025-01-15', dueDate: '2025-02-15', amount: 'R$ 150,00', status: 'Pendente' },
-            { id: 'F002', date: '2025-02-10', dueDate: '2025-03-10', amount: 'R$ 200,00', status: 'Pago' },
-            { id: 'F003', date: '2025-03-05', dueDate: '2025-04-05', amount: 'R$ 180,00', status: 'Vencido' }
-        ],
-        user2: [ // Maria Oliveira
-            { id: 'F004', date: '2025-01-20', dueDate: '2025-02-20', amount: 'R$ 120,00', status: 'Pago' },
-            { id: 'F005', date: '2025-03-12', dueDate: '2025-04-12', amount: 'R$ 300,00', status: 'Pendente' }
-        ],
-        user3: [ // Pedro Souza
-            { id: 'F006', date: '2025-02-01', dueDate: '2025-03-01', amount: 'R$ 250,00', status: 'Pago' }
-        ]
-    };
+    // REMOVIDOS os dados de faturas simulados (invoicesData)
 
     const usersMap = {
         user1: 'Usuário 1 (João Silva)',
@@ -30,45 +16,63 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentUserName = document.getElementById('currentUserName');
     const logoutBtn = document.getElementById('logoutBtn');
 
-    // 3. Função para Carregar Faturas
-    function loadInvoices(userId) {
-        const invoices = invoicesData[userId] || [];
+    // 3. Função para Carregar Faturas (AGORA BUSCA DO WORKER/BANCO DE DADOS)
+    async function loadInvoices(userId) { // Adicionado 'async'
         invoiceTableBody.innerHTML = ''; // Limpa a tabela
+        noInvoicesMessage.style.display = 'none'; // Esconde a mensagem inicial
 
-        if (invoices.length === 0) {
+        try {
+            // FAZ A REQUISIÇÃO PARA O SEU WORKER (BACKEND)
+            // A rota configurada no Cloudflare vai direcionar esta chamada para o seu Worker
+            const response = await fetch(`/api/faturas?userId=${userId}`); 
+            
+            if (!response.ok) { 
+                throw new Error(`Erro ao buscar faturas: ${response.status} ${response.statusText}`);
+            }
+
+            const invoices = await response.json(); // Pega os dados em formato JSON do Worker
+
+            if (invoices.length === 0) {
+                noInvoicesMessage.style.display = 'block';
+                noInvoicesMessage.textContent = 'Nenhuma fatura encontrada para este usuário.';
+            } else {
+                noInvoicesMessage.style.display = 'none';
+                invoices.forEach(invoice => {
+                    const row = invoiceTableBody.insertRow();
+                    row.insertCell(0).textContent = invoice.id;
+                    // Certifique-se que os nomes das propriedades (date, dueDate, amount, status)
+                    // correspondem exatamente aos nomes que seu Worker retorna da query SQL.
+                    // Se seu banco tiver 'data' em vez de 'date', use invoice.data, etc.
+                    row.insertCell(1).textContent = invoice.date; 
+                    row.insertCell(2).textContent = invoice.dueDate; 
+                    row.insertCell(3).textContent = invoice.amount;
+
+                    const statusCell = row.insertCell(4);
+                    statusCell.textContent = invoice.status;
+                    statusCell.className = `status-${invoice.status.toLowerCase()}`;
+
+                    const actionsCell = row.insertCell(5);
+                    const viewBtn = document.createElement('button');
+                    viewBtn.textContent = 'Ver';
+                    viewBtn.className = 'action-btn view';
+                    viewBtn.onclick = () => alert(`Visualizando fatura ${invoice.id}`);
+                    actionsCell.appendChild(viewBtn);
+
+                    if (invoice.status !== 'Pago') {
+                        const payBtn = document.createElement('button');
+                        payBtn.textContent = 'Pagar';
+                        payBtn.className = 'action-btn pay';
+                        payBtn.onclick = () => alert(`Processando pagamento para fatura ${invoice.id}`);
+                        actionsCell.appendChild(payBtn);
+                    }
+                });
+            }
+            currentUserName.textContent = `Faturas de: ${usersMap[userId] || 'Usuário Desconhecido'}`;
+        } catch (error) {
+            console.error("Erro ao carregar faturas:", error);
+            noInvoicesMessage.textContent = `Erro ao carregar faturas: ${error.message}. Verifique o console.`;
             noInvoicesMessage.style.display = 'block';
-        } else {
-            noInvoicesMessage.style.display = 'none';
-            invoices.forEach(invoice => {
-                const row = invoiceTableBody.insertRow();
-                row.insertCell(0).textContent = invoice.id;
-                row.insertCell(1).textContent = invoice.date;
-                row.insertCell(2).textContent = invoice.dueDate;
-                row.insertCell(3).textContent = invoice.amount;
-
-                const statusCell = row.insertCell(4);
-                statusCell.textContent = invoice.status;
-                statusCell.className = `status-${invoice.status.toLowerCase()}`; // Adiciona classe para estilização
-
-                const actionsCell = row.insertCell(5);
-                // Botão "Ver"
-                const viewBtn = document.createElement('button');
-                viewBtn.textContent = 'Ver';
-                viewBtn.className = 'action-btn view';
-                viewBtn.onclick = () => alert(`Visualizando fatura ${invoice.id}`);
-                actionsCell.appendChild(viewBtn);
-
-                // Botão "Pagar" (apenas se não estiver pago)
-                if (invoice.status !== 'Pago') {
-                    const payBtn = document.createElement('button');
-                    payBtn.textContent = 'Pagar';
-                    payBtn.className = 'action-btn pay';
-                    payBtn.onclick = () => alert(`Processando pagamento para fatura ${invoice.id}`);
-                    actionsCell.appendChild(payBtn);
-                }
-            });
         }
-        currentUserName.textContent = `Faturas de: ${usersMap[userId]}`;
     }
 
     // 4. Event Listeners
@@ -77,16 +81,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     logoutBtn.addEventListener('click', (event) => {
-        event.preventDefault(); // Evita que o link redirecione
+        event.preventDefault(); 
         alert('Você foi desconectado!');
-        // Aqui você adicionaria a lógica real de logout/redirecionamento
     });
 
     // 5. Atualizar Ano no Rodapé e Última Atualização
     document.getElementById('currentYear').textContent = new Date().getFullYear();
     const lastUpdate = new Date();
     document.getElementById('lastUpdatedDate').textContent = lastUpdate.toLocaleDateString('pt-BR');
-
 
     // 6. Carregar faturas do primeiro usuário ao iniciar
     loadInvoices(userSelect.value);
@@ -95,7 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('nav ul li a').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-
             const targetId = this.getAttribute('href');
             if (targetId.startsWith('#')) {
                 const targetElement = document.querySelector(targetId);
