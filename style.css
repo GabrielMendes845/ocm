@@ -1,0 +1,67 @@
+/* Seu arquivo: css/style.css */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e9f5f9; /* Um azul bem clarinho */
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+header {
+    background-color: #007bff; /* Azul vibrante */
+    color: white;
+    padding: 20px 0;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+main {
+    flex-grow: 1; /* Faz o conteúdo principal ocupar o espaço restante */
+    padding: 40px 20px;
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
+    box-sizing: border-box; /* Garante que padding não estoure a largura */
+}
+
+p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #28a745; /* Verde */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+button:hover {
+    background-color: #218838; /* Verde mais escuro no hover */
+}
+
+footer {
+    background-color: #343a40; /* Cinza escuro */
+    color: white;
+    padding: 15px 0;
+    width: 100%;
+    text-align: center;
+    font-size: 0.9em;
+}
