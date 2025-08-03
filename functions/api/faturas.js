@@ -5,6 +5,9 @@ export async function onRequest(context) {
     const { request, env, params } = context;
     const url = new URL(request.url);
 
+    // >>>>>>>>>>>>>> ADICIONE ESTA LINHA <<<<<<<<<<<<<<
+    console.log(`DEBUG: Valor de env.D1_banco:`, env.D1_banco); 
+
     console.log(`Requisição recebida: Método = ${request.method}, Caminho = ${url.pathname}`);
 
     // --- Lógica para GET (Buscar Faturas) ---
@@ -49,7 +52,7 @@ export async function onRequest(context) {
             // Prepara e executa a instrução SQL SELECT no seu banco D1
             // Certifique-se de que os nomes das colunas ('fatura', 'valor', 'data')
             // correspondem exatamente aos nomes das colunas na sua tabela D1.
-            const { results: fetchedResults } = await env.D1_banco.prepare(
+            const { results: fetchedResults } = await env.D1_banco.prepare( // ESTA LINHA É ONDE O ERRO ESTÁ ACONTECENDO
                 `SELECT fatura AS id, 
                         valor AS amount, 
                         data AS date, 
