@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sua Empresa - Faturas</title>
-    <link rel="stylesheet" href="css/style.css"> <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Sua Empresa - Início</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -12,23 +13,22 @@
             <div class="logo">Sua Empresa</div>
             <nav>
                 <ul>
-                    <li><a href="#home">Início</a></li>
-                    <li><a href="#faturas">Faturas</a></li>
-                    <li><a href="#contato">Contato</a></li>
-                    <li><a href="#" id="logoutBtn">Sair</a></li>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="faturas.html">Faturas</a></li>
+                    <li><a href="contato.html">Contato</a></li> <li><a href="#" id="logoutBtn">Sair</a></li>
                 </ul>
             </nav>
         </div>
     </header>
- 
+
     <main>
         <section id="home" class="hero-section">
             <div class="container">
                 <h2>Bem-vindo ao Portal do Cliente!</h2>
                 <p>Aqui você pode gerenciar suas faturas de forma rápida e segura.</p>
                 <div class="user-select-container">
-                    <label for="userSelect">Acessar como Usuário:</label>
-                    <select id="userSelect">
+                    <label for="userSelectIndex">Acessar como Usuário:</label>
+                    <select id="userSelectIndex">
                         <option value="user1">Usuário 1 (João Silva)</option>
                         <option value="user2">Usuário 2 (Maria Oliveira)</option>
                         <option value="user3">Usuário 3 (Pedro Souza)</option>
@@ -36,31 +36,7 @@
                 </div>
             </div>
         </section>
- 
-        <section id="faturas" class="invoices-section">
-            <div class="container">
-                <h2>Minhas Faturas</h2>
-                <p id="currentUserName">Faturas de: Usuário 1 (João Silva)</p>
-                <div class="invoice-table-container">
-                    <table id="invoiceTable">
-                        <thead>
-                            <tr>
-                                <th>Número da Fatura</th>
-                                <th>Data</th>
-                                <th>Vencimento</th>
-                                <th>Valor</th>
-                                <th>Status</th>
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            </tbody>
-                    </table>
-                    <p id="noInvoicesMessage" style="display: none;">Nenhuma fatura encontrada para este usuário.</p>
-                </div>
-            </div>
-        </section>
- 
+
         <section id="contato" class="contact-section">
             <div class="container">
                 <h2>Fale Conosco</h2>
@@ -70,13 +46,13 @@
             </div>
         </section>
     </main>
- 
+
     <footer>
         <div class="container">
             <p>&copy; <span id="currentYear"></span> Sua Empresa. Todos os direitos reservados.</p>
             <p>Última atualização: <span id="lastUpdatedDate"></span></p>
         </div>
     </footer>
- 
-    <script src="js/script.js"></script> </body>
+
+    <script src="js/index.js"></script> </body>
 </html>
