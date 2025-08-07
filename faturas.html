@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sua Empresa - Minhas Faturas</title>
+    <title>Sua Empresa - Faturas</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
@@ -15,41 +15,31 @@
                 <ul>
                     <li><a href="index.html">Início</a></li>
                     <li><a href="faturas.html">Faturas</a></li>
-                    <li><a href="contato.html">Contato</a></li> <li><a href="#" id="logoutBtn">Sair</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="#" id="logoutBtn">Sair</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main>
-        <section id="faturas-page" class="invoices-section">
+        <section id="invoices" class="invoices-section">
             <div class="container">
-                <h2>Minhas Faturas</h2>
-                <p id="currentUserName">Carregando faturas...</p>
-                <div class="user-select-container">
-                    <label for="userSelect">Acessar como Usuário:</label>
-                    <select id="userSelect">
-                        <option value="user1">Usuário 1 (João Silva)</option>
-                        <option value="user2">Usuário 2 (Maria Oliveira)</option>
-                        <option value="user3">Usuário 3 (Pedro Souza)</option>
-                    </select>
-                </div>
+                <h2>Suas Faturas</h2>
                 <div class="invoice-table-container">
                     <table id="invoiceTable">
                         <thead>
                             <tr>
-                                <th>Número da Fatura</th>
-                                <th>Data</th>
-                                <th>Vencimento</th>
+                                <th>Fatura</th>
                                 <th>Valor</th>
+                                <th>Data de Vencimento</th>
                                 <th>Status</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="invoiceTableBody">
                             </tbody>
                     </table>
-                    <p id="noInvoicesMessage" style="display: none;">Nenhuma fatura encontrada para este usuário.</p>
                 </div>
             </div>
         </section>
@@ -57,7 +47,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; <span id="currentYear"></span> Sua Empresa. Todos os direitos reservados.</p>
+            <p>© <span id="currentYear"></span> Sua Empresa. Todos os direitos reservados.</p>
             <p>Última atualização: <span id="lastUpdatedDate"></span></p>
         </div>
     </footer>
